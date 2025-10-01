@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-card">
+            <div class="game-header">
+                <h1 id="status-message" class="status-message">Player X's turn</h1>
+                
+                <div class="game-mode-buttons">
+                    <button id="pvp-btn" class="mode-btn active">Player vs Player</button>
+                    <button id="ai-btn" class="mode-btn">Player vs AI</button>
+                </div>
+                
+                <div class="score-board">
+                    <div class="score-badge x-score">
+                        <span id="x-label">Player X</span>: <span id="x-score">0</span>
+                    </div>
+                    <div class="score-badge ties-score">
+                        Ties: <span id="ties-score">0</span>
+                    </div>
+                    <div class="score-badge o-score">
+                        <span id="o-label">Player O</span>: <span id="o-score">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-content">
+                <div class="game-board" id="game-board">
+                    <button class="cell" data-index="0"></button>
+                    <button class="cell" data-index="1"></button>
+                    <button class="cell" data-index="2"></button>
+                    <button class="cell" data-index="3"></button>
+                    <button class="cell" data-index="4"></button>
+                    <button class="cell" data-index="5"></button>
+                    <button class="cell" data-index="6"></button>
+                    <button class="cell" data-index="7"></button>
+                    <button class="cell" data-index="8"></button>
+                    <div id="winning-line" class="winning-line"></div>
+                </div>
+                
+                <div class="control-buttons">
+                    <button id="new-game-btn" class="control-btn new-game">New Game</button>
+                    <button id="reset-score-btn" class="control-btn reset-score">Reset Score</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

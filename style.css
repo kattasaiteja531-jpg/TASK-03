@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.game-container {
+  padding: 20px;
+}
+
+.game-card {
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(168, 85, 247, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 25px 50px rgba(168, 85, 247, 0.2);
+  padding: 30px;
+  max-width: 500px;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.status-message {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.game-mode-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.mode-btn {
+  padding: 10px 20px;
+  border: 2px solid;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.mode-btn.active {
+  background: rgba(59, 130, 246, 0.6);
+  border-color: #3b82f6;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.mode-btn:not(.active) {
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.2);
+}
+
+.mode-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
+}
+
+.score-board {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.score-badge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.x-score {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #93c5fd;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.ties-score {
+  background: rgba(107, 114, 128, 0.2);
+  border-color: rgba(107, 114, 128, 0.5);
+  color: #d1d5db;
+}
+
+.o-score {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #fca5a5;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+}
+
+.game-content {
+  text-align: center;
+}
+
+.game-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-width: 300px;
+  margin: 0 auto 30px;
+  padding: 20px;
+  border: 2px solid #a855f7;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.6), inset 0 0 30px rgba(168, 85, 247, 0.1);
+}
+
+.cell {
+  aspect-ratio: 1;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(168, 85, 247, 0.7);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3), inset 0 0 15px rgba(168, 85, 247, 0.1);
+}
+
+.cell:hover:not(:disabled) {
+  background: rgba(168, 85, 247, 0.3);
+  transform: scale(1.05);
+}
+
+.cell:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.cell svg {
+  width: 60px;
+  height: 60px;
+}
+
+.winning-line {
+  position: absolute;
+  background: linear-gradient(to right, #f472b6, #ef4444);
+  border-radius: 3px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 0 30px rgba(244, 114, 182, 0.9), 0 0 60px rgba(244, 114, 182, 0.6), 0 0 90px rgba(244, 114, 182, 0.4);
+  filter: brightness(1.2);
+  animation: pulse 1s infinite;
+}
+
+.winning-line.show {
+  opacity: 1;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.control-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.control-btn {
+  padding: 12px 24px;
+  border: 2px solid;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.new-game {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+}
+
+.reset-score {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.new-game:hover {
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+}
+
+.reset-score:hover {
+  box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+}
+
+/* Neon glow effects for X and O */
+.neon-x {
+  filter: drop-shadow(0 0 10px #60a5fa) drop-shadow(0 0 20px #60a5fa) drop-shadow(0 0 30px #60a5fa);
+}
+
+.neon-o {
+  filter: drop-shadow(0 0 10px #f87171) drop-shadow(0 0 20px #f87171) drop-shadow(0 0 30px #f87171);
+}
